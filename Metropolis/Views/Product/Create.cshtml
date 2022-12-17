@@ -1,0 +1,66 @@
+﻿@model Metropolis.Models.ViewModels.ProductVM
+
+<form method="post" asp-action="Create">
+    <div class="border p-3">
+        @*<div asp-validation-summary="ModelOnly" class="text-danger"></div>*@
+        <div class="form-group row">
+            <h2 class="text-black-50 pl-3">Add Product</h2>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group row">
+                    <div class="col-6">
+                        <label asp-for="Product.Name"></label>
+                        <input asp-for="Product.Name" class="form-control" />
+                        <span asp-validation-for="Product.Name" class="text-danger"></span>
+                    </div>
+                    <div class="col-6">
+                        <label asp-for="Product.Cost"></label>
+                        <input asp-for="Product.Cost" class="form-control" />
+                        <span asp-validation-for="Product.Cost" class="text-danger"></span>
+                    </div>
+                    <div class="col-4">
+                        <label asp-for="Product.Brand"></label>
+                        <select asp-for="Product.BrandId" asp-items="@Model.DDBrand" class="form-control">
+                            <option selected>--Select Brand--</option>
+                        </select>
+                        <span asp-validation-for="Product.BrandId" class="text-danger"></span>
+                    </div>
+                    <div class="col-4">
+                        <label asp-for="Product.Product_types"></label>
+                        <select asp-for="Product.Product_type_id" asp-items="@Model.DDProduct_Type" class="form-control">
+                            <option selected>--Select Type--</option>
+                        </select>
+                        <span asp-validation-for="Product.Product_type_id" class="text-danger"></span>
+                    </div>
+                    <div class="col-4">
+                        <label asp-for="Product.Country"></label>
+                        <select asp-for="Product.CountryId" asp-items="@Model.DDCountry" class="form-control">
+                            <option selected>--Select Country--</option>
+                        </select>
+                        <span asp-validation-for="Product.CountryId" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                </div>
+                <div class="form-group row">
+                    <div class="col-8 offset-2 row">
+                        <div class="col">
+                            <input type="submit" class="btn btn-info w-75" value="create" />
+                        </div>
+                        <div class="col">
+                            <a asp-action="Index" class="btn btn-danger w-75">Back</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+}
+}

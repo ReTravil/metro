@@ -1,0 +1,16 @@
+﻿@using Microsoft.AspNetCore.Identity
+@model Metropolis.Models.ViewModels.ChangeRoleVM
+
+<h2>Изменение роли для пользователя @Model.UserEmail</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" name="userId" value="@Model.UserId" />
+    <div class="form-check">
+        @foreach (IdentityRole role in Model.AllRoles)
+        {
+            <input class="form-check-input" type="radio" name="roles" value="@role.Name"
+                   @(Model.UserRoles.Contains(role.Name) ? "checked=\"checked\"" : "") />@role.Name <br />
+            }
+    </div>
+    <button type="submit" class="btn btn-outline-info">Сохранить</button>
+</form>
